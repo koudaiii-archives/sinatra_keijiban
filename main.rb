@@ -9,7 +9,7 @@ books = db.execute("SELECT title, author, price FROM books;")
 p books
 
 get '/' do
-   "Hello"
+  erb :index
 end
 
 get '/example' do
