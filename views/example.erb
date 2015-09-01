@@ -3,5 +3,13 @@
 </div>
 <script src="/js/main.js"></script>
 <p>
-  Hello world!
+  こんにちは！
+</p>
+<%= escape_html("<script>alert('sample')</script>") %>
+<p>
+  <% if 3 % 2 == 1 %>
+  ここに表示される
+  <% else %>
+  ここに表示されない
+  <% end %>
 </p>
