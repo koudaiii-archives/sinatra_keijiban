@@ -1,19 +1,25 @@
 require 'sinatra'
 require 'sqlite3'
 
-db = SQLite3::Database.new "db/test.db"
-db.results_as_hash = true
+db_test = SQLite3::Database.new "db/test.db"
+db_test.results_as_hash = true
 
-books = db.execute("SELECT title, author, price FROM books;")
+books = db_test.execute("SELECT title, author, price FROM books;")
 
 p books
+
+db = SQLite3::Database.new "db/post.db"
+db.results_as_hash = true
 
 get '/' do
   erb :index
 end
 
 post '/' do
-  puts params['ex_text']
+  stmt = db.prepare("INSERT INTO posts (text) VALUES (?)")
+  stmt.bind_params(params['ex_text'])
+  stmt.execute
+  redirect '/'
 end
 
 get '/example' do
