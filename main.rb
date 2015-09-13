@@ -12,6 +12,10 @@ get '/' do
   erb :index
 end
 
+post '/' do
+  puts params['ex_text']
+end
+
 get '/example' do
   erb :example
 end
