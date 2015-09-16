@@ -1,11 +1,13 @@
 <% posts.each do |post| %>
   <div>
     <%= escape_html post["text"] %>
+    <%= escape_html post["img_file_name"] %>
   </div>
 <% end %>
 
 
-<form method="post" action="/" >
+<form method="post" action="/" enctype="multipart/form-data">
   <textarea rows="10" cols="30" name="ex_text" id="ex-text"></textarea>
+  <input type="file" name="file">
   <input type="submit" name="submit" value="submit">
 </form>
