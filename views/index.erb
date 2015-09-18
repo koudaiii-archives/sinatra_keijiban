@@ -9,9 +9,16 @@
   </div>
 <% end %>
 
-
-<form method="post" action="/" enctype="multipart/form-data">
-  <textarea rows="10" cols="30" name="ex_text" id="ex-text"></textarea>
-  <input type="file" name="file">
-  <input type="submit" name="submit" value="submit">
-</form>
+<div class="submit">
+  <form method="post" id="ex-from" action="/" enctype="multipart/form-data">
+    <div class="form-text">
+        <textarea name="ex_text" id="ex-text"></textarea>
+    </div>
+    <div class="form-file">
+      <input type="file" name="file" value="file">
+    </div>
+    <div class="form-submit">
+      <input type="submit" name="submit">
+    </div>
+  </form>
+</div>
