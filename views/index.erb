@@ -1,7 +1,11 @@
 <% posts.each do |post| %>
   <div>
-    <%= escape_html post["text"] %>
-    <%= escape_html post["img_file_name"] %>
+    <div class="post">
+      <%= escape_html post["text"] %>
+    </div>
+    <div class="post-image">
+        <img src="/uploads/<%= post["img_file_name"]%>" alt="<%= post["img_file_name"]%>" class="ex-image"/>
+    </div>
   </div>
 <% end %>
 
