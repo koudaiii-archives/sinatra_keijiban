@@ -12,10 +12,19 @@ p books
 db = SQLite3::Database.new 'db/post.db'
 db.results_as_hash = true
 
-
 get '/' do
   posts = db.execute('SELECT * FROM posts ORDER BY id DESC')
   erb :index, { :locals => { :posts => posts } }
+end
+
+get '/star' do
+  post_id = params["post_id"].to_i
+  post = db.execute("SELECT star_count FROM posts WHERE id = ?", post_id)
+  return 'error' if post.empty?
+  new_star_count = db.prepare("UPDATE posts SET stear_count = ? WHERE id = ?")
+  stmt.bind_params(new_star_count, post_id)
+  stmt.execute
+  return 'スターを付けました'
 end
 
 post '/' do
