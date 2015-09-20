@@ -1,4 +1,7 @@
 require 'sinatra'
+require 'byebug'
+require 'pry'
+require 'pry-nav'
 require 'sqlite3'
 require 'securerandom'
 
@@ -21,7 +24,8 @@ get '/star' do
   post_id = params["post_id"].to_i
   post = db.execute("SELECT star_count FROM posts WHERE id = ?", post_id)
   return 'error' if post.empty?
-  new_star_count = db.prepare("UPDATE posts SET stear_count = ? WHERE id = ?")
+  new_star_count = post[0]["star_count"] + 1
+  stmt = db.prepare("UPDATE posts SET star_count = ? WHERE id = ?")
   stmt.bind_params(new_star_count, post_id)
   stmt.execute
   return 'スターを付けました'
