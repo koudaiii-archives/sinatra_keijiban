@@ -45,3 +45,13 @@ textarea {
 .form-submit {
   margin-top: 10px;
 }
+
+.tool {
+  margin-left: 15px;
+  margin-top: 10px;
+}
+
+.add-star:before {
+  content: "★";
+  color: yellow;
+}
