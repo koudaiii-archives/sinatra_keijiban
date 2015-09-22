@@ -1,6 +1,15 @@
 $(function() {
     $('.add-star').click(function(){
-      // TODO: function
-      console.log("test");
+      var $this = $(this);
+      var post_id = $this.attr('data-post-id');
+      $.ajax({
+        url: '/star?post_id=' + post_id,
+        success: function(data) {
+          $this.text(data['star_count'])
+        },
+        error: function(data) {
+          alert('失敗しました');
+        }
+      });
     });
 });
