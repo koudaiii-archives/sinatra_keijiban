@@ -52,6 +52,11 @@ textarea {
 }
 
 .add-star:before {
+  cursor: pointer;
   content: "★";
   color: yellow;
+}
+
+.add-star:hover {
+  text-decoration: underline;
 }
